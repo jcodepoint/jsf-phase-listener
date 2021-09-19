@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+  		xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<head>
+		<title>Alta de Productos</title>
+	</head>
+	<body>
+		<h1>Alta de Productos</h1>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Codigo" for="codigo" />
+				<h:inputText id="codigo" value="#{productosManagedBean.producto.codigo}" />
+				<h:outputLabel value="Nombre" for="nombre" />
+				<h:inputText id="nombre" value="#{productosManagedBean.producto.nombre}">
+					<f:validator validatorId="SampleValidator" />
+				</h:inputText>
+				<h:outputLabel value="Precio" for="precio" />
+				<h:inputText id="precio" value="#{productosManagedBean.producto.precio}" />
+				<h:commandButton value="Agregar" action="#{productosManagedBean.agregarProducto()}" />
+				<h:commandButton value="Cancelar" immediate="true" />
+			</h:panelGrid>
+		</h:form>
+
+		<h:dataTable border="1" var="producto" value="#{productosManagedBean.productos}">
+			<h:column>
+				<f:facet name="header">Codigo</f:facet>
+				#{producto.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+				#{producto.nombre}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+				#{producto.precio}
+			</h:column>
+		</h:dataTable>
+	</body>
+</html>
